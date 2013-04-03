@@ -32,6 +32,18 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+    public function actionCheck()
+    {
+        var_dump(count(Page::model()->setConnection('master')->findAll()));
+
+        var_dump(count(Page::model()->findAll()));
+
+        $model = new Page();
+        $model->name = 4;
+        $model->setConnection('slave');
+        $model->save();
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
