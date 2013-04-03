@@ -48,7 +48,8 @@ return array(
 		),
 
         'db' => array(
-            'class'=>'system.db.CDbReplicationCollection',
+            'class'=>'CDbCollection',
+            'defaultComponent' => 'slave',
             'components'=>array(
                 'master'=>array(
                     'class'=>'CDbConnection',
@@ -69,7 +70,6 @@ return array(
                     'connectionType'=>CDbConnection::TYPE_SLAVE,
                 )
             ),
-            'defaultConnection' => 'master',
         ),
 		// uncomment the following to use a MySQL database
 		/*

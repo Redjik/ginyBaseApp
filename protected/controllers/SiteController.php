@@ -38,10 +38,10 @@ class SiteController extends Controller
 
         var_dump(count(Page::model()->findAll()));
 
-        $model = new Page();
-        $model->name = 4;
-        $model->setConnection('slave');
-        $model->save();
+//        $model = new Page();
+//        $model->name = 4;
+//        $model->setConnection('slave');
+//        $model->save();
     }
 
 	/**

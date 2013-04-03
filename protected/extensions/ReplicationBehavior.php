@@ -8,36 +8,44 @@ class ReplicationBehavior extends CActiveRecordBehavior
 
     protected $is_explicit=false;
 
+    /**
+     * @return CActiveRecord
+     */
     public function setToMaster()
     {
-        $this->setConnection($this->maserConnectionName,true);
+        $this->setConnection($this->maserConnectionName);
         return $this->owner;
     }
 
+    /**
+     * @return CActiveRecord
+     */
     public function setToSlave()
     {
-        $this->setConnection($this->slaveConnectionName,true);
+        $this->setConnection($this->slaveConnectionName);
         return $this->owner;
     }
 
-    protected function setConnection($name,$setExplicit=false)
+    public function setConnection($name,$setExplicit=true)
     {
-        $this->owner->getDbConnection()->setConnection($name);
+        $this->owner->getDbConnection()->setCurrentComponent($name);
 
         if ($setExplicit)
             $this->is_explicit = true;
+
+        return $this->owner;
     }
 
     public function beforeSave()
     {
         if (!$this->is_explicit)
-            $this->setConnection($this->maserConnectionName);
+            $this->setConnection($this->maserConnectionName,false);
     }
 
     public function afterSave()
     {
         if (!$this->is_explicit)
-            $this->setConnection($this->slaveConnectionName);
+            $this->setConnection($this->slaveConnectionName,false);
         else
             $this->is_explicit = false;
     }
@@ -45,13 +53,13 @@ class ReplicationBehavior extends CActiveRecordBehavior
     public function beforeDelete()
     {
         if (!$this->is_explicit)
-            $this->setConnection($this->maserConnectionName);
+            $this->setConnection($this->maserConnectionName,false);
     }
 
     public function afterDelete()
     {
         if (!$this->is_explicit)
-            $this->setConnection($this->slaveConnectionName);
+            $this->setConnection($this->slaveConnectionName,false);
         else
             $this->is_explicit = false;
     }
@@ -59,7 +67,7 @@ class ReplicationBehavior extends CActiveRecordBehavior
     public function beforeFind()
     {
         if (!$this->is_explicit)
-            $this->setConnection($this->slaveConnectionName);
+            $this->setConnection($this->slaveConnectionName,false);
         else
             $this->is_explicit = false;
     }
