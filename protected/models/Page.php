@@ -44,12 +44,12 @@ class Page extends CActiveRecord
 		);
 	}
 
-    public function behaviors()
-    {
-        return array(
-            'ReplicationBehavior'=>array('class'=>'ext.ReplicationBehavior')
-        );
-    }
+//    public function behaviors()
+//    {
+//        return array(
+//            'ReplicationBehavior'=>array('class'=>'ext.ReplicationBehavior')
+//        );
+//    }
 
 	/**
 	 * @return array customized attribute labels (name=>label)

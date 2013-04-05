@@ -34,8 +34,8 @@ class SiteController extends Controller
 
     public function actionCheck()
     {
-        var_dump(count(Page::model()->setConnection('master')->findAll()));
         var_dump(count(Page::model()->findAll()));
+
 
 //        $model = new Page();
 //        $model->name = 4;

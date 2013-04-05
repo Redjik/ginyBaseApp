@@ -48,28 +48,18 @@ return array(
 		),
 
         'db' => array(
-            'class'=>'CDbCollection',
-            'defaultComponent' => 'slave',
-            'components'=>array(
-                'master'=>array(
+            'class'=>'CDbServiceLocator',
+            'service_class'=>array(
+                'class'=>'CDbSingleConnectionRouter',
+                'connection'=>array(
                     'class'=>'CDbConnection',
                     'connectionString' => 'mysql:host=localhost;dbname=giny_master',
                     'emulatePrepare' => true,
                     'username' => 'root',
                     'password' => '',
                     'charset' => 'utf8',
-                    'connectionType'=>CDbConnection::TYPE_MASTER,
-                ),
-                'slave'=>array(
-                    'class'=>'CDbConnection',
-                    'connectionString' => 'mysql:host=localhost;dbname=giny_slave',
-                    'emulatePrepare' => true,
-                    'username' => 'root',
-                    'password' => '',
-                    'charset' => 'utf8',
-                    'connectionType'=>CDbConnection::TYPE_SLAVE,
                 )
-            ),
+            )
         ),
 		// uncomment the following to use a MySQL database
 		/*
@@ -94,11 +84,11 @@ return array(
                     'categories'=>array('system.db.CDbConnection')
 				),
 				// uncomment the following to show log messages on web pages
-				/*
+
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				*/
+
 			),
 		),
 	),
