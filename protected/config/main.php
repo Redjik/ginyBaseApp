@@ -5,7 +5,7 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-return array(
+$config = array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
@@ -18,17 +18,7 @@ return array(
 		'application.components.*',
 	),
 
-	'modules'=>array(
-		// uncomment the following to enable the Gii tool
 
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'1',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('*','::1'),
-		),
-
-	),
 
 	// application components
 	'components'=>array(
@@ -100,3 +90,21 @@ return array(
 		'adminEmail'=>'webmaster@example.com',
 	),
 );
+
+// Path to directory for author defenition
+$path = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'author' . DIRECTORY_SEPARATOR;
+
+$dir = dir($path);
+while (($entry = $dir->read()) !== false) {
+    if (is_file($path . $entry) && $entry[0] === '.' && $entry != '.gitignore') {
+        $YII_ENVIRONMENT = substr($entry, 1);
+        break;
+    }
+}
+unset($dir);
+
+if (isset($YII_ENVIRONMENT) && file_exists(__DIR__ . '/.' . $YII_ENVIRONMENT . '.php')) {
+    $custom = include(__DIR__ . '/.' . $YII_ENVIRONMENT . '.php');
+    $config = CMap::mergeArray($config, $custom);
+}
+return $config;
