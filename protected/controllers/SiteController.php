@@ -38,9 +38,9 @@ class SiteController extends Controller
 
 
 //        $model = new Page();
-//        $model->name = 4;
-//        $model->setConnection('slave');
+//        $model->name = 6;
 //        $model->save();
+        var_dump(count(Page::model()->unsetForceMaster()->findAll()));
     }
 
 	/**
