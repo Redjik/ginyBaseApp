@@ -2,6 +2,7 @@
 return array(
     'components'=> array(
         'db' => array(
+            'schemaCachingDuration'=>1000,
             'connections'=>array(
                 'master'=>array(
                     'class'=>'CDbConnection',

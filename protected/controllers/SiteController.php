@@ -34,13 +34,12 @@ class SiteController extends Controller
 
     public function actionCheck()
     {
-        var_dump(count(Page::model()->forceMaster()->findAll()));
+        var_dump(count(Page::model()->findAll()));
 
 
 //        $model = new Page();
 //        $model->name = 6;
 //        $model->save();
-        var_dump(count(Page::model()->unsetForceMaster()->findAll()));
     }
 
 	/**

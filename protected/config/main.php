@@ -51,6 +51,9 @@ $config = array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
+        'cache'=>array(
+            'class'=>'CApcCache'
+        ),
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
