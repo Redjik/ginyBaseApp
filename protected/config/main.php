@@ -37,21 +37,7 @@ $config = array(
 			),
 		),
 
-        'db' => array(
-            'class'=>'CDbServiceLocator',
-            'service_class'=>array(
-                'class'=>'CDbSingleConnectionRouter',
-                'connection'=>array(
-                    'class'=>'CDbConnection',
-                    'connectionString' => 'mysql:host=localhost;dbname=giny_master',
-                    'emulatePrepare' => true,
-                    'username' => 'root',
-                    'password' => '',
-                    'charset' => 'utf8',
-                )
-            )
-        ),
-		// uncomment the following to use a MySQL database
+    	// uncomment the following to use a MySQL database
 		/*
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=testdrive',

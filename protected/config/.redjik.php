@@ -2,16 +2,24 @@
 return array(
     'components'=> array(
         'db' => array(
-            'class'=>'CDbServiceLocator',
-            'service_class'=>array(
-                'class'=>'CDbSingleConnectionRouter',
-                'connection'=>array(
+            'connections'=>array(
+                'master'=>array(
                     'class'=>'CDbConnection',
-                    'connectionString' => 'mysql:host=localhost;dbname=step_up',
+                    'connectionString' => 'mysql:host=localhost;dbname=giny_master',
                     'emulatePrepare' => true,
                     'username' => 'root',
                     'password' => '',
                     'charset' => 'utf8',
+                    'type'=>CDbConnection::TYPE_MASTER
+                ),
+                'slave'=>array(
+                    'class'=>'CDbConnection',
+                    'connectionString' => 'mysql:host=localhost;dbname=giny_slave',
+                    'emulatePrepare' => true,
+                    'username' => 'root',
+                    'password' => '',
+                    'charset' => 'utf8',
+                    'type'=>CDbConnection::TYPE_SLAVE
                 )
             )
         ),
