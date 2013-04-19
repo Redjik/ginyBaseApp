@@ -34,14 +34,25 @@ class SiteController extends Controller
 
     public function actionCheck()
     {
-        var_dump(count(Page::model()->findAll()));
+//        var_dump(count(Page::model()->findAll()));
+//
+//
+//        $model = new Page();
+//        $model->name = 6;
+//        $model->save();
+//
+//        var_dump(count(Page::model()->findAll()));
 
+        /** @var $mailDic GMailComponent */
+        $mailDic = Yii::app()->mail;
+        $mailer = $mailDic->mailer;
+//        $message = $mailDic->getNewMessage('Wonderful Subject')
+//            ->setFrom(array('john@doe.com' => 'John Doe'))
+//            ->setTo(array('receiver@domain.org', 'other@domain.org' => 'A name'))
+//            ->setBody('Here is the message itself')
+//        ;
+//        $result = $mailer->send($message);
 
-        $model = new Page();
-        $model->name = 6;
-        $model->save();
-
-        var_dump(count(Page::model()->findAll()));
     }
 
 	/**
