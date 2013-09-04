@@ -1,29 +1,29 @@
 <?php
 return array(
     'components'=> array(
-//        'db' => array(
-//            'schemaCachingDuration'=>1000,
-//            'connections'=>array(
-//                'master'=>array(
-//                    'class'=>'CDbConnection',
-//                    'connectionString' => 'mysql:host=localhost;dbname=giny_master',
-//                    'emulatePrepare' => true,
-//                    'username' => 'root',
-//                    'password' => '',
-//                    'charset' => 'utf8',
-//                    'type'=>CDbConnection::TYPE_MASTER
-//                ),
-//                'slave'=>array(
-//                    'class'=>'CDbConnection',
-//                    'connectionString' => 'mysql:host=localhost;dbname=giny_slave',
-//                    'emulatePrepare' => true,
-//                    'username' => 'root',
-//                    'password' => '',
-//                    'charset' => 'utf8',
-//                    'type'=>CDbConnection::TYPE_SLAVE
-//                )
-//            )
-//        ),
+        'db' => array(
+            'schemaCachingDuration'=>1000,
+            'connections'=>array(
+                'master'=>array(
+                    'class'=>'GDbConnection',
+                    'connectionString' => 'mysql:host=localhost;dbname=giny_master',
+                    'emulatePrepare' => true,
+                    'username' => 'root',
+                    'password' => '',
+                    'charset' => 'utf8',
+                    'type'=>GDbConnection::TYPE_MASTER
+                ),
+                'slave'=>array(
+                    'class'=>'GDbConnection',
+                    'connectionString' => 'mysql:host=localhost;dbname=giny_slave',
+                    'emulatePrepare' => true,
+                    'username' => 'root',
+                    'password' => '',
+                    'charset' => 'utf8',
+                    'type'=>GDbConnection::TYPE_SLAVE
+                )
+            )
+        ),
         'mail' => array(
             'class'=>'GMailComponent',
             'components'=> array(
